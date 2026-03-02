@@ -1,109 +1,148 @@
-/* ===== 全局重置 ===== */
+/* ===== 基础变量（浅色默认） ===== */
+:root {
+  --bg: #f5f5f7;
+  --card: #ffffff;
+  --text: #1d1d1f;
+  --subtext: #86868b;
+  --border: #d2d2d7;
+  --hover: #f1f1f3;
+  --primary: #0071e3;
+  --primary-hover: #005ecb;
+  --danger: #ff3b30;
+  --shadow: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== 深色模式自动切换 ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000000;
+    --card: #1c1c1e;
+    --text: #ffffff;
+    --subtext: #a1a1a6;
+    --border: #2c2c2e;
+    --hover: #2a2a2c;
+    --primary: #0a84ff;
+    --primary-hover: #409cff;
+    --danger: #ff453a;
+    --shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ===== Reset ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial,
+    sans-serif;
 }
 
 /* ===== 页面背景 ===== */
 body {
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  background: var(--bg);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: background 0.3s ease;
 }
 
 /* ===== 主卡片 ===== */
 .app {
-  background: white;
   width: 420px;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  background: var(--card);
+  padding: 32px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow);
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .app h1 {
+  font-size: 26px;
+  font-weight: 600;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 24px;
+  color: var(--text);
 }
 
-/* ===== 输入框 ===== */
+/* ===== 输入区域 ===== */
 form {
   display: flex;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 input {
   flex: 1;
-  padding: 10px 12px;
-  border: 2px solid #eee;
-  border-radius: 8px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   outline: none;
-  transition: 0.2s;
+  font-size: 14px;
+  background: transparent;
+  color: var(--text);
+  transition: all 0.2s ease;
 }
 
 input:focus {
-  border-color: #667eea;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
 }
 
 button {
-  padding: 10px 16px;
+  padding: 12px 16px;
+  border-radius: 12px;
   border: none;
-  background: #667eea;
-  color: white;
-  border-radius: 8px;
+  font-size: 14px;
   cursor: pointer;
-  transition: 0.2s;
+  background: var(--primary);
+  color: white;
+  transition: all 0.2s ease;
 }
 
 button:hover {
-  background: #5563d6;
+  background: var(--primary-hover);
 }
 
-/* ===== Todo 列表 ===== */
+/* ===== 列表 ===== */
 ul {
   list-style: none;
 }
 
 li {
-  background: #f8f9ff;
-  padding: 10px 12px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  background: var(--hover);
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: 0.2s;
+  transition: background 0.2s ease;
 }
 
-li:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-/* ===== 任务文字 ===== */
 .todo-text {
+  font-size: 14px;
+  color: var(--text);
   cursor: pointer;
-  transition: 0.2s;
 }
 
 .todo-text.completed {
+  color: var(--subtext);
   text-decoration: line-through;
-  opacity: 0.5;
 }
 
 /* ===== 删除按钮 ===== */
 .delete-btn {
-  background: #ff5c5c;
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 12px;
+  background: transparent;
+  color: var(--danger);
+  font-size: 13px;
+  padding: 6px 8px;
+  border-radius: 8px;
 }
 
 .delete-btn:hover {
-  background: #e04848;
+  background: rgba(255, 69, 58, 0.15);
 }

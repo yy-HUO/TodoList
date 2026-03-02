@@ -27,7 +27,7 @@ function App() {
   }
 
   return (
-    <div style={{ maxWidth: "400px", margin: "40px auto" }}>
+    <div className="app">
       <h1>Todo List</h1>
       <TodoInput onAdd={addTodo} />
       <TodoList todos={todos} onDelete={deleteTodo} onToggle={toggleTodo} />
