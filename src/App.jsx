@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TodoInput from "./components/TodoInput";
-import TodoList from "./components/TodoList";
+import TodoInput from "./components/TodoInput.jsx";
+import TodoList from "./components/TodoList.jsx";
 
 function App() {
   const [todos, setTodos] = useState([]);
