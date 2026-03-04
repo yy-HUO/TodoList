@@ -2,7 +2,6 @@ import { useState } from "react";
 
 function TodoInput({ onAdd }) {
   const [text, setText] = useState("");
-  const [time, setTime] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -10,7 +9,6 @@ function TodoInput({ onAdd }) {
 
     onAdd(text, time);
     setText("");
-    setTime("");
   }
 
   return (
@@ -22,12 +20,6 @@ function TodoInput({ onAdd }) {
         placeholder="Enter a task..."
       />
 
-      <input
-        type="time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-        placeholder="Enter a time..."
-      />
       <button type="submit">Add</button>
     </form>
   );

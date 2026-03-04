@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TodoInput from "./components/TodoInput.jsx";
 import TodoList from "./components/TodoList.jsx";
 
 function App() {
-  const [todos, setTodos] = useState([]);
+  //  初始化时从 localStorage 读取
+  const [todos, setTodos] = useState(() => {
+    const stored = localStorage.getItem("todos");
+    return stored ? JSON.parse(stored) : [];
+  });
+  //  监听 todos 变化并存储
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(text) {
     const newTodo = {
