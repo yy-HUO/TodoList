@@ -7,7 +7,7 @@ function TodoInput({ onAdd }) {
     e.preventDefault();
     if (!text.trim()) return;
 
-    onAdd(text, time);
+    onAdd(text);
     setText("");
   }
 
